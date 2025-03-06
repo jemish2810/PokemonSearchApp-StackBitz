@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { fetchPokemonDetail } from "@/services/pokemonService";
 import { Metadata } from 'next'
+import NextImage from '@/app/components/UI/Image'
 
 interface PokemonDetailProps {
   params: { pokemon_name: string };
@@ -34,7 +34,7 @@ const PokemonDetail = async ({ params }: PokemonDetailProps) => {
         <h1 className="text-3xl font-bold capitalize text-center">{pokemon.name}</h1>
         
         <div className="flex justify-center my-4">
-          <Image
+          <NextImage
             src={pokemon.sprites.front_default}
             alt={pokemon.name}
             width={150}

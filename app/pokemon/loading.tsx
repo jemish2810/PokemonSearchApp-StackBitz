@@ -1,4 +1,4 @@
-const Loader = () => {
+const PokemonLoader = () => {
   return (
     <div className="flex justify-center items-center min-h-[50vh]">
       <div className="flex flex-row gap-2">
@@ -10,4 +10,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default PokemonLoader;

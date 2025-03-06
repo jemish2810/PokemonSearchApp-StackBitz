@@ -20,7 +20,6 @@ const PokemonList = () => {
   const selectedType = searchParams.get("type") || "normal";
   const searchQuery = searchParams.get("search") || "";
 
-  const debouncedType = useDebounce(selectedType, 500);
   const debouncedSearch = useDebounce(searchQuery, 500);
 
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
@@ -44,7 +43,7 @@ const PokemonList = () => {
     const fetchByType = async () => {
       setLoading(true);
       try {
-        const response = await fetchPokemonByType(debouncedType);
+        const response = await fetchPokemonByType(selectedType);
         setPokemonList(response);
       } catch (error) {
         console.error("Error fetching Pokemon by type", error);
@@ -53,10 +52,10 @@ const PokemonList = () => {
       }
     };
 
-    if (debouncedType) {
+    if (selectedType) {
       fetchByType();
     }
-  }, [debouncedType]);
+  }, [selectedType]);
 
   const filteredPokemon = useMemo(() => {
     return pokemonList.filter((pokemon) =>
@@ -66,20 +65,20 @@ const PokemonList = () => {
 
   useEffect(() => {
     router.replace(
-      `${currentPathName}?type=${debouncedType}&search=${debouncedSearch}`,
-      {
-        scroll: false,
-      }
+      `${currentPathName}?type=${selectedType}&search=${debouncedSearch}`,
+      { scroll: false }
     );
-  }, [debouncedType, debouncedSearch, currentPathName, router]);
+  }, [selectedType, debouncedSearch, currentPathName, router]);
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Pokemon List</h1>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <h1 className="text-2xl font-bold mb-6 text-center sm:text-left">
+        Pokemon List
+      </h1>
 
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
         <select
-          className="w-full rounded md:w-1/3 px-8 py-3 shadow-md"
+          className="w-full sm:w-1/3 px-4 py-2 text-sm rounded-md shadow-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={selectedType}
           onChange={(e) =>
             router.replace(
@@ -104,11 +103,11 @@ const PokemonList = () => {
       </div>
 
       {loading ? (
-        <div className="flex justify-center my-6">
+        <div className="flex justify-center my-8">
           <Loader />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {filteredPokemon.length > 0 ? (
             filteredPokemon.map((pokemon, index) => (
               <PokemonCard
@@ -119,7 +118,7 @@ const PokemonList = () => {
               />
             ))
           ) : (
-            <p className="col-span-full text-center text-gray-500">
+            <p className="col-span-full text-center text-gray-500 py-6">
               No Pokemon found.
             </p>
           )}
