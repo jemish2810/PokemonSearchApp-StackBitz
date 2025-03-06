@@ -12,16 +12,16 @@ export async function generateMetadata({ params }: PokemonDetailProps): Promise<
 
   if (!pokemon) {
     return {
-      title: "Pokemon Not Found | PokedexApp",
-      description: "This Pokemon could not be found in our PokedexApp.",
+      title: "Pokemon Not Found | PokemonSearchApp",
+      description: "This Pokemon could not be found in our PokemonSearchApp.",
       robots: "noindex, nofollow",
     };
   }
 
   return {
-    title: `${pokemon.name.toUpperCase()} | PokedexApp`,
+    title: `${pokemon.name.toUpperCase()} | PokemonSearchApp`,
     description: `Discover details about ${pokemon.name}, including stats, abilities, and more.`,
-    keywords: `PokedexApp, ${pokemon.name}, Pokemon details`,
+    keywords: `PokemonSearchApp, ${pokemon.name}, Pokemon details`,
   };
 }
 

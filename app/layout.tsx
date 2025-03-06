@@ -5,9 +5,9 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'PokedexApp | Explore & Search Pokemon',
+  title: 'PokemonSearchApp | Explore & Search Pokemon',
   description: 'Discover and search for Pokemon by type, name, and attributes. Stay updated with the latest Pokemon data!',
-  keywords: 'Pokemon, PokedexApp, Pokemon list, search Pokemon, Pokemon types',
+  keywords: 'Pokemon, PokemonSearchApp, Pokemon list, search Pokemon, Pokemon types',
 };
 
 

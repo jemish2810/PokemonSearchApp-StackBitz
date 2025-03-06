@@ -33,7 +33,7 @@ const PokemonList = () => {
         const response = await fetchPokemonTypes();
         setTypes(response.results.map((type: { name: string }) => type.name));
       } catch (error) {
-        console.error("Error fetching Pokémon types", error);
+        console.error("Error fetching Pokemon types", error);
       }
     };
 
@@ -47,7 +47,7 @@ const PokemonList = () => {
         const response = await fetchPokemonByType(debouncedType);
         setPokemonList(response);
       } catch (error) {
-        console.error("Error fetching Pokémon by type", error);
+        console.error("Error fetching Pokemon by type", error);
       } finally {
         setLoading(false);
       }
@@ -75,7 +75,7 @@ const PokemonList = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Pokémon List</h1>
+      <h1 className="text-2xl font-bold mb-4">Pokemon List</h1>
 
       <div className="flex flex-col md:flex-row gap-4 mb-6">
         <select
@@ -120,7 +120,7 @@ const PokemonList = () => {
             ))
           ) : (
             <p className="col-span-full text-center text-gray-500">
-              No Pokémon found.
+              No Pokemon found.
             </p>
           )}
         </div>
