@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 const SearchInput = ({ onSearch }: { onSearch?: (query: string) => void }) => {
